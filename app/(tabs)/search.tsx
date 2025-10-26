@@ -1,11 +1,11 @@
 import { Text, View } from "react-native";
 
-const Profile = () => {
+const Search = () => {
   return (
     <View>
-      <Text>Profile</Text>
+      <Text>Search</Text>
     </View>
   );
 };
 
-export default Profile;
+export default Search;
