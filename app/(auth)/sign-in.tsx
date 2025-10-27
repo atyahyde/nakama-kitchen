@@ -12,7 +12,7 @@ const SignIn = () => {
   });
   const submit: () => Promise<void> = async () => {
     if (!form.email || !form.password)
-      Alert.alert("Error", "Please fill all the fields");
+      return Alert.alert("Error", "Please fill all the fields");
 
     setIsSubmitting(true);
 
@@ -30,18 +30,20 @@ const SignIn = () => {
       <CustomInput
         placeholder="Enter your email"
         value={form.email}
-        onChangeText={(text) => {}}
+        onChangeText={(text) => setForm((prev) => ({ ...prev, email: text }))}
         label="Email"
         keyboardType="email-address"
       />
       <CustomInput
         placeholder="Enter your password"
         value={form.password}
-        onChangeText={(text) => {}}
+        onChangeText={(text) =>
+          setForm((prev) => ({ ...prev, password: text }))
+        }
         label="Password"
         secureTextEntry={true}
       />
-      <CustomButton title="Sign In" />
+      <CustomButton title="Sign In" isLoading={isSubmitting} onPress={submit} />
       <View className="flex mt-5 flex-row items-center justify-center gap-2">
         <Text className="base-regular text-gray-100">
           Don't have an account?{" "}
